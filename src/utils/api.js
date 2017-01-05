@@ -77,6 +77,35 @@ export async function request(method, path, body, suppressRedBox) {
   }
 }
 
+export function getRovers() {
+  var api = 'https://api.nasa.gov/mars-photos/api/v1/rovers?api_key=DEMO_KEY';
+  return fetch(api)
+  .then((res) =>  res.json());
+}
+
+
+export function getPosts() {
+  var api = `http://10.10.12.46:3000/api/v1/posts`;
+
+  var headers = new Headers();
+
+  
+  headers.append('userId', '57ff71b171743a50369a3b56');
+  headers.append('accessToken', 'EAAXZA4giEFwwBAJfZALlTNy3bZBKuSExJPir9ohDa64qijsvjZB9jxKJZATeOJsGTsT0EKXvqoc6yzZAxhIowtlDW9hlKz7pXr2yUi7Y6i6PEvNh6M1l4SmrUKZAC58epjzISZAiobl6jUqLppi5lushvFJpUH9Ma1NFfY9pKQQZBZCXDfEDui4rPJ9g5FTsG6Oc7t78axXQIeDKNhGUg1NrCgLRCJkRnt9zMZD');
+  headers.append('clientSecret', 'androidSecret');
+  headers.append('clientId', 'androidApp');
+
+  let init = {
+    method: 'GET',
+    headers: headers
+  }
+
+  return fetch(api, init)
+  .then((res) => {
+    return res.json();
+  });
+}
+
 /**
  * Takes a relative path and makes it a full URL to API server
  */
@@ -210,3 +239,7 @@ function logError(error, endpoint, method) {
     console.error(`API request ${method.toUpperCase()} ${endpoint} failed with message "${error.message}"`);
   }
 }
+
+
+
+

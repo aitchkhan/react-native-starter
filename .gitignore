@@ -49,3 +49,6 @@ android/keystores/debug.keystore
 
 #yarn
 yarn-error.log
+
+#vscode
+.vscode/
