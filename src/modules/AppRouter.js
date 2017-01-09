@@ -10,6 +10,10 @@ import ColorViewContainer from './colors/ColorViewContainer';
 export default function AppRouter(props) {
   const key = props.scene.route.key;
 
+  if (key === 'Login') {
+    return <CounterViewContainer />;
+  }
+  
   if (key === 'Counter') {
     return <CounterViewContainer />;
   }
